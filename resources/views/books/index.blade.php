@@ -32,7 +32,7 @@
                             <h6 class="card-subtitle mb-2 text-muted">{{ $book->author }}</h6>
                             <p class="card-text">{{ fake()->text() }}</p>
                             @admin
-                                <a href="#" class="btn btn-sm btn-primary mx-2">Edit</a>
+                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary mx-2">Edit</a>
                             @endadmin
                             <a href="#" class="btn btn-sm btn-success mx-2">Buy</a>
                         </div>

@@ -21,8 +21,19 @@ class BooksService
         return $this->model->orderByDesc('created_at')->paginate($quantity);
     }
 
+    public function findById($id)
+    {
+        return $this->model->find($id);
+    }
+
     public function store($data)
     {
         return $this->model->create($data);
+    }
+
+    public function update($data, $id)
+    {
+        $book = $this->findById($id);
+        return $book->update($data);
     }
 }
