@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BooksController;
+use App\Http\Middleware\EnsureIsAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +23,10 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/books', [BooksController::class, 'index'])->name('books.index');
+
+    Route::middleware(EnsureIsAdmin::class)->group(function () {
+        Route::resource('books', BooksController::class)->except(['index']);
+    });
 });
