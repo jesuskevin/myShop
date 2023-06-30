@@ -49,7 +49,7 @@
                                     </form>
                                 @endadmin
                                 @member
-                                    <a href="#" class="btn btn-sm btn-success mx-2">Buy</a>
+                                    <a href="{{ route('checkout', $book->id) }}" class="btn btn-sm btn-success mx-2">Buy</a>
                                 @endmember
                             </div>
                         </div>

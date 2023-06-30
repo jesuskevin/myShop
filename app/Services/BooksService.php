@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Book;
-use Stripe\StripeClient;
 
 class BooksService
 {
@@ -21,7 +20,8 @@ class BooksService
 
     public function getAllPaginated($quantity)
     {
-        return $this->model->orderByDesc('created_at')->paginate($quantity);
+        $userBooks = auth()->user()->books->pluck('id')->toArray();
+        return $this->model::whereNotIn('id', $userBooks)->orderByDesc('created_at')->paginate($quantity);
     }
 
     public function findById($id)

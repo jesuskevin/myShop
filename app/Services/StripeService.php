@@ -75,4 +75,14 @@ class StripeService
         //if there is not change in the price just update the product
         return $this->stripeClient->products->update($book->stripe_product_id, $params);
     }
+
+    public function getProduct($stripe_product_id)
+    {
+        return $this->stripeClient->products->retrieve($stripe_product_id);
+    }
+
+    public function getProductPrice($stripe_product_id)
+    {
+        return $this->stripeClient->prices->all(['product' => $stripe_product_id])['data'][0]['id'];
+    }
 }

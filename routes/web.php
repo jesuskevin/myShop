@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Middleware\EnsureIsAdmin;
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +32,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::middleware(EnsureIsAdmin::class)->group(function () {
         Route::resource('books', BooksController::class)->except(['index']);
     });
+
+    Route::get('/checkout/{book}', [PaymentsController::class, 'checkout'])->name('checkout');
 });
