@@ -2,29 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\BooksService;
-use App\Services\StripeService;
+use App\Services\PaymentsService;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
 
-    protected $booksService;
-    protected $stripeService;
+    protected $paymentsService;
 
-    public function __construct(BooksService $booksService, StripeService $stripeService)
+    public function __construct(PaymentsService $paymentsService)
     {
-        $this->booksService = $booksService;
-        $this->stripeService = $stripeService;
+        $this->paymentsService = $paymentsService;
     }
 
     public function checkout(Request $request, $id)
     {
-        $book = $this->booksService->findById($id);
-        $price = $this->stripeService->getProductPrice($book->stripe_product_id);
-        return $request->user()->checkout($price, [
-            'success_url' => route('home') . "?session_id={CHECKOUT_SESSION_ID}&book_id=$book->id",
-            'cancel_url' => route('home'),
-        ]);
+        return $this->paymentsService->checkout($request, $id);
     }
 }
