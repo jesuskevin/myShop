@@ -12,6 +12,7 @@ class Book extends Model
     protected $fillable = [
         'name',
         'author',
-        'price'
+        'price',
+        'stripe_product_id',
     ];
 }
