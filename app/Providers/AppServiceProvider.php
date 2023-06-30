@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
             return auth()->user()->role == User::ROLE_ADMIN;
         });
 
+        Blade::if('member', function () {
+            return auth()->user()->role == User::ROLE_MEMBER;
+        });
+
         Paginator::useBootstrapFive();
     }
 }

@@ -48,7 +48,9 @@
                                         <input type="submit" class="btn btn-sm btn-danger mx-2" value="Delete">
                                     </form>
                                 @endadmin
-                                <a href="#" class="btn btn-sm btn-success mx-2">Buy</a>
+                                @member
+                                    <a href="#" class="btn btn-sm btn-success mx-2">Buy</a>
+                                @endmember
                             </div>
                         </div>
                     </div>
