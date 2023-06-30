@@ -25,7 +25,7 @@
             @if ($books->isEmpty())
                 <div class="col-md-12 mt-4 text-center">
                     <div class="alert alert-primary" role="alert">
-                        There are no books to show.
+                        There are no books to show. We will let you know where there is new books :).
                     </div>
                 </div>
             @else

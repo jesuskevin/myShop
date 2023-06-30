@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(60),
         ]);
 
-        $this->call([
-            BooksSeeder::class,
-        ]);
+        // $this->call([
+        //     BooksSeeder::class,
+        // ]);
     }
 }
