@@ -1,66 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# myShop
+## Prueba tecnica relaizada con PHP y Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es la presentacion de una prueba tecnica para una vacante como desarrollador PHP/LAravel.
 
-## About Laravel
+#### Este es el objetivo:
+Crear una aplicación utilizando el framework Laravel que tenga las siguientes funcionalidades:
++ control de acceso de usuarios
++ registros de logs 
++ integración del paquete Cashier para gestionar pagos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El proyecto que lleva por nombre myShop consiste en una pequeña simulacion de una tienda de libros.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### Existen dos tipos de usuarios:
++ Administrador - quien puede crear, editar y eliminar libros.
++ Miembro - puede ver los libros creados por el administrador y comprarlos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Herramientas utilizadas:
++ Version de Laravel utilizada: 10.14.1
++ Version de PHP: 8.1.6
++ Servidor: XAMPP - Apache & MySQL
++ Paquete Laravel Cashier
++ Laravel Ui
++ Bootstrap 5
 
-## Learning Laravel
+#### Configuracion del proyeycto
++ Clonar el repositorio: correr el siguiente comando en su terminal 'git clone https://github.com/jesuskevin/myShop.git'
++ Luego ingresamos a la carpeta del proyecto mediante la terminal instalar todas las depencias de composer con el comando: 'composer install' en su terminal (si utiliza Visual Studio Code puede abrir una terminal con las teclas ctrl + `)
++ Lo mismo con las dependencias de node, utilizar el comando 'npm install' en su terminal
++ El siguiente paso es crear un archivo que lleve por nombre .env en la raiz del proyecto y copiar todo lo que esta en el archivo .env.example al nuevo archivo ya creado
++ Luego de esto utilizamos el comando 'php artisan key:genrate' en la terminal para configurar el APP_KEY del proyecto
++ (opcional) cambiar el nombre de la aplicacion en la variable APP_NAME del archivo .env. En mi caso seria myShop
++ Vamos a nuestro administrador de base de datos y creamos una, el nombre que utilizemos lo vamos a poner en la variable DB_DATABASE de nuestro archivo .env (si utilizas otra configuracion debes de cambiar las demas variables de acuerdo a ellas y al motor de base de datos a utilizar, en mi caso es MySQL)
++ luego de esto configuramos Laravel cashier y stripe poniendo las siguientes variables en nuestro archivo .env:
+STRIPE_KEY=tu-api-key-de-stripe
+STRIPE_SECRET=tu-api-secret-de-stripe
+puedes acceder a este link para obtener tus claves de acceso 'https://dashboard.stripe.com/test/apikeys' en caso de no tener un cuenta primero debes de registrarte.
++ Ya con nuestra base de datos creada y todo en orden, vamos a utilizar el comando 'php artisan migrate --seed' en nuestra terminal para crea todas las tablas y a su vez crear un usuario administrador por defecto.
++ En una consola utilizaremos el comando 'npm run dev' para compilar todos nuestros archivos del fronted y correr un servidor de prueba y la dejamos corriendo.
++ Ya por ultimo creamos una nueva terminal (usando el comando ctrl + shift + ` en vscode) y en esta vamos a ejecutar el comando 'php artisan serve' para ejecutar un servidor de desarrollo y por igual dejamos la consola con el proceso corriendo. (Tendriamos dos terminales corriendo dos procesos distintos).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Si la configuracion fue correcta, accediendo al enlace 'http://127.0.0.1:8000' veriamos el proyecto en marcha, donde la pagina de inicio de sesion es la pagina principal.
+Podemos inicicar session con el usuario administrador existente en la base de datos
+email: admin@myshop.com
+password: password
