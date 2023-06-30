@@ -22,7 +22,7 @@
         @endadmin
         <div class="row">
 
-            @if (empty($books))
+            @if ($books->isEmpty())
                 <div class="col-md-12 mt-4 text-center">
                     <div class="alert alert-primary" role="alert">
                         There are no books to show.
