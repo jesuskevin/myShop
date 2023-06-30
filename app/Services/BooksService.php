@@ -36,4 +36,10 @@ class BooksService
         $book = $this->findById($id);
         return $book->update($data);
     }
+
+    public function delete($id)
+    {
+        $book = $this->findById($id);
+        return $book->delete();
+    }
 }

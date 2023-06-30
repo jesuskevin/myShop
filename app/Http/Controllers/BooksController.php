@@ -79,6 +79,7 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->booksService->delete($id);
+        return redirect()->back()->with('success', 'Book deleted successfully');
     }
 }

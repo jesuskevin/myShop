@@ -33,6 +33,11 @@
                             <p class="card-text">{{ fake()->text() }}</p>
                             @admin
                                 <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary mx-2">Edit</a>
+                                <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-sm btn-danger mx-2" value="Delete">
+                                </form>
                             @endadmin
                             <a href="#" class="btn btn-sm btn-success mx-2">Buy</a>
                         </div>
