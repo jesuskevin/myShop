@@ -85,4 +85,12 @@ class StripeService
     {
         return $this->stripeClient->prices->all(['product' => $stripe_product_id])['data'][0]['id'];
     }
+
+    function disableProduct($book)
+    {
+        $params = [
+            'active' => false,
+        ];
+        return $this->stripeClient->products->update($book->stripe_product_id, $params);
+    }
 }

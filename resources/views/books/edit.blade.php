@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-6">
             <h4 class="fw-bold">Edit Book</h4>
-            <form action="{{ route('books.update', $book->id) }}" method="POST">
+            <form action="{{ route('books.update', $book->uuid) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

@@ -15,6 +15,7 @@ class Book extends Model
         'author',
         'price',
         'stripe_product_id',
+        'uuid',
     ];
 
     public function users(): BelongsToMany

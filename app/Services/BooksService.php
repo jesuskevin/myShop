@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Book;
+use Illuminate\Support\Str;
 
 class BooksService
 {
@@ -29,23 +30,30 @@ class BooksService
         return $this->model->find($id);
     }
 
+    public function findByUuid($uuid)
+    {
+        return $this->model::where('uuid', $uuid)->first();
+    }
+
     public function store($data)
     {
         $product = $this->stripeService->createProduct($data);
         $data['stripe_product_id'] = $product->id;
+        $data['uuid'] = Str::uuid();
         return $this->model->create($data);
     }
 
-    public function update($data, $id)
+    public function update($data, $uuid)
     {
-        $book = $this->findById($id);
+        $book = $this->findByUuid($uuid);
         $this->stripeService->updateProduct($data, $book);
         return $book->update($data);
     }
 
-    public function delete($id)
+    public function delete($uuid)
     {
-        $book = $this->findById($id);
+        $book = $this->findByUuid($uuid);
+        $this->stripeService->disableProduct($book);
         return $book->delete();
     }
 }

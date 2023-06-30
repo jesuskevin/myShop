@@ -57,9 +57,9 @@ class BooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        $book = $this->booksService->findById($id);
+        $book = $this->booksService->findByUuid($uuid);
         $data = compact('book');
         return view('books.edit', $data);
     }
@@ -67,19 +67,19 @@ class BooksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookRequest $request, $id)
+    public function update(UpdateBookRequest $request, $uuid)
     {
         $data = $request->validated();
-        $this->booksService->update($data, $id);
+        $this->booksService->update($data, $uuid);
         return redirect()->back()->with('success', 'Book updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $this->booksService->delete($id);
+        $this->booksService->delete($uuid);
         return redirect()->back()->with('success', 'Book deleted successfully');
     }
 }

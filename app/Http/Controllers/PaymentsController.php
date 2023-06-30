@@ -15,8 +15,8 @@ class PaymentsController extends Controller
         $this->paymentsService = $paymentsService;
     }
 
-    public function checkout(Request $request, $id)
+    public function checkout(Request $request, $uuid)
     {
-        return $this->paymentsService->checkout($request, $id);
+        return $this->paymentsService->checkout($request, $uuid);
     }
 }

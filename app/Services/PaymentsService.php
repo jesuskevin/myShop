@@ -20,9 +20,9 @@ class PaymentsService
         $this->stripeService = $stripeService;
     }
 
-    public function checkout($request, $id)
+    public function checkout($request, $uuid)
     {
-        $book = $this->booksService->findById($id);
+        $book = $this->booksService->findByUuid($uuid);
         $price = $this->stripeService->getProductPrice($book->stripe_product_id);
         return $request->user()->checkout($price, [
             'success_url' => route('home') . "?session_id={CHECKOUT_SESSION_ID}&book_id=$book->id",
